@@ -10,6 +10,7 @@ describe("Swap token to token", function(){
   let t2;
   let ad1;
   let owner;
+  
   beforeEach(async () => {
     token = await ethers.getContractFactory("Uswap");
     await hre.network.provider.request({
@@ -21,33 +22,35 @@ describe("Swap token to token", function(){
     await hardhat.deployed();
   });
   
- it("SwapTtoT", async () => {
-   const DAI = "0x6b175474e89094c44da98b954eedeac495271d0f";
-   const AAVE = "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9";
-   const ad_to = owner.address;
-   const tokenArtifacts = await artifacts.readArtifact("IERC20");
-   const tokenx = new ethers.Contract(DAI,tokenArtifacts.abi);
-   await tokenx.connect(owner).approve(hardhat.address,ethers.utils.parseUnits("2", 18) );
-    await hardhat.connect(owner).swapTtoT(DAI,AAVE,ethers.utils.parseUnits("2", 18),0,ad_to);
-    // expect(await getAmountOutMin(DAI,AAVE,ethers.utils.parseUnits("2", 18))).to.eq(0);
-    });
+  it("SwapTtoT", async () => {
+    const DAI = "0x6b175474e89094c44da98b954eedeac495271d0f";
+    const AAVE = "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9";
+    const ad_to = owner.address;
+    
+    const tokenArtifacts = await artifacts.readArtifact("IERC20");
+    const tokenx = new ethers.Contract(DAI,tokenArtifacts.abi);
+    await tokenx.connect(owner).approve(hardhat.address,ethers.utils.parseUnits("2", 18) );
+     await hardhat.connect(owner).swapTtoT(DAI,AAVE,ethers.utils.parseUnits("2", 18),0,ad_to);
+     // expect(await getAmountOutMin(DAI,AAVE,ethers.utils.parseUnits("2", 18))).to.eq(0);
+     });
 
     it("SwapTtoE", async () => {
-      const DAI = "0x6b175474e89094c44da98b954eedeac495271d0f";
-      const ETH = "0x7d812B62Dc15e6F4073ebA8a2bA8Db19c4E40704";
-   const ad_to = owner.address;
-   const tokenArtifacts = await artifacts.readArtifact("IERC20");
-   const tokenx = new ethers.Contract(DAI,tokenArtifacts.abi);
-   await tokenx.connect(owner).approve(hardhat.address,ethers.utils.parseUnits("2", 18) );
-    await hardhat.connect(owner).swapTtoE(DAI,ethers.utils.parseUnits("2", 18),0,ad_to);
-    })
+       const DAI = "0x6b175474e89094c44da98b954eedeac495271d0f";
+       const ETH = "0x7d812B62Dc15e6F4073ebA8a2bA8Db19c4E40704";
+    const ad_to = owner.address;
+      
+    const tokenArtifacts = await artifacts.readArtifact("IERC20");
+    const tokenx = new ethers.Contract(DAI,tokenArtifacts.abi);
+    await tokenx.connect(owner).approve(hardhat.address,ethers.utils.parseUnits("2", 18) );
+     await hardhat.connect(owner).swapTtoE(DAI,ethers.utils.parseUnits("2", 18),0,ad_to);
+     })
 
     it("SwapEtoT", async () => {
       const ETH = "0x7d812B62Dc15e6F4073ebA8a2bA8Db19c4E40704";
       const DAI = "0x6b175474e89094c44da98b954eedeac495271d0f";
    const ad_to = owner.address;
-   
-    await hardhat.connect(owner).swapEtoT(ethers.utils.parseUnits("100", 18),DAI,0,ad_to);
+  
+   await hardhat.connect(owner).swapEtoT(ethers.utils.parseEther("5", 18),DAI,0,ad_to, {value: ethers.utils.parseEther("5", 18)});
     const tokenArtifacts = await artifacts.readArtifact("IERC20");
    const tokenx = new ethers.Contract(DAI,tokenArtifacts.abi);
    await tokenx.connect(owner).approve(hardhat.address,0) ;
