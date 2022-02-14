@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 
-
-//uptill line 160 is the code I needed to import.
+//uptill line 161 is the code I needed to import.
 import "hardhat/console.sol";
 
 interface IERC20 {
@@ -201,27 +200,28 @@ contract Uswap {
       block.timestamp
     );
   }
-
+ 
   function swapEtoT(
     uint _amountIn,
     address _tokenOut,
     uint _amountOutMin,
     address _to
   )external payable{
-   // _amountIn = msg.value;
+   
     PWETH(WETH).deposit{value: msg.value}();
+    IERC20(WETH).approve(UNISWAP_V2_ROUTER, _amountIn);
     
     address [] memory path;
     path = new address[](2);
     path[0] = WETH;
     path[1] = _tokenOut;
-   console.log(IERC20(WETH).balanceOf(address(this)));
-   IUniswapV2Router(UNISWAP_V2_ROUTER).swapExactETHForTokens{value: msg.value}(
-    _amountOutMin,
-    path,
-    _to,
-     block.timestamp
-  );
+   IUniswapV2Router(UNISWAP_V2_ROUTER).swapExactTokensForTokens(
+      _amountIn,
+      _amountOutMin,
+      path,
+      _to,
+      block.timestamp
+    );
   }
 
   function swapTtoE(
@@ -239,7 +239,6 @@ contract Uswap {
     path[1] = WETH;
 
       PWETH(WETH).transfer(_to, msg.value);
-//console.log(block.timestamp);
     IUniswapV2Router(UNISWAP_V2_ROUTER).swapExactTokensForETH(
     _amountIn,
     _amountOutMin,
