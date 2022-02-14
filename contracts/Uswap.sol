@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 
+
+//uptill line 160 is the code I needed to import.
 import "hardhat/console.sol";
 
 interface IERC20 {
@@ -78,8 +80,6 @@ interface IERC20 {
     event Approval(address indexed owner, address indexed spender, uint256 value);
 }
 
-
-//uptill line 90 is the code I needed to import.
 // https://uniswap.org/docs/v2/smart-contracts
 
 interface IUniswapV2Router {
