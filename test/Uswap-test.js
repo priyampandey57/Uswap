@@ -10,12 +10,6 @@ describe("Swap token to token", function(){
   let t2;
   let ad1;
   let owner;
-  //const accountToInpersonate = "0x6F6C07d80D0D433ca389D336e6D1feBEA2489264"
-  // beforeEach(function (done) {
-  //   this.timeout(10000)
-  //   done();
-  // abi, address
-  // ethers.Contract(abi, address);
   beforeEach(async () => {
     token = await ethers.getContractFactory("Uswap");
     await hre.network.provider.request({
