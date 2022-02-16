@@ -52,13 +52,12 @@ contract Uswap {
     PWETH(WETH).deposit{value: msg.value}();
     IERC20(WETH).approve(UNISWAP_V2_ROUTER, _amountIn);
 
-    
     address [] memory path;
     path = new address[](2);
     path[0] = WETH;
     path[1] = _tokenOut;
-   console.log(IERC20(WETH).balanceOf(address(this)));
-   console.log("msg.value" , msg.value);
+   //console.log(IERC20(WETH).balanceOf(address(this)));
+   //console.log("msg.value" , msg.value);
    IUniswapV2Router(UNISWAP_V2_ROUTER).swapExactTokensForTokens(
       _amountIn,
       _amountOutMin,
