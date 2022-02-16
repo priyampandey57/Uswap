@@ -65,13 +65,6 @@ contract Uswap {
       _to,
       block.timestamp
     );
-  //  IUniswapV2Router(UNISWAP_V2_ROUTER).swapExactETHForTokens{value: msg.value}(
-  //   _amountOutMin,
-  //   path,
-  //   _to,
-  //    block.timestamp
-  // );
-  // this.swapTtoT(WETH, _tokenOut, _amountIn, _amountOutMin, _to);
   }
 
   function swapTtoE(
@@ -88,8 +81,6 @@ contract Uswap {
     path[0] = _tokenIn;
     path[1] = WETH;
 
-      PWETH(WETH).transfer(_to, msg.value);
-//console.log(block.timestamp);
     IUniswapV2Router(UNISWAP_V2_ROUTER).swapExactTokensForETH(
     _amountIn,
     _amountOutMin,
@@ -97,7 +88,6 @@ contract Uswap {
     _to,
     block.timestamp
   );
- 
   }
 
   function getAmountOutMin (
