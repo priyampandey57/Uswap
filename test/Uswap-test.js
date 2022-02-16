@@ -10,16 +10,6 @@ describe("Swap token to token", function(){
   let t2;
   let ad1;
   let owner;
-<<<<<<< HEAD
-  //const accountToInpersonate = "0x6F6C07d80D0D433ca389D336e6D1feBEA2489264"
-  // beforeEach(function (done) {
-  //   this.timeout(10000) //for timeout
-  //   done();
-  // abi, address
-  // ethers.Contract(abi, address);
-=======
-  
->>>>>>> fa80ea98c1065defa83a128dcc8697bb4252007d
   beforeEach(async () => {
     token = await ethers.getContractFactory("Uswap");
     await hre.network.provider.request({
@@ -35,10 +25,6 @@ describe("Swap token to token", function(){
     const DAI = "0x6b175474e89094c44da98b954eedeac495271d0f";
     const AAVE = "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9";
     const ad_to = owner.address;
-<<<<<<< HEAD
-=======
-    
->>>>>>> fa80ea98c1065defa83a128dcc8697bb4252007d
     const tokenArtifacts = await artifacts.readArtifact("IERC20");
     const tokenx = new ethers.Contract(DAI,tokenArtifacts.abi);
     await tokenx.connect(owner).approve(hardhat.address,ethers.utils.parseUnits("2", 18) );
@@ -50,12 +36,7 @@ describe("Swap token to token", function(){
        const DAI = "0x6b175474e89094c44da98b954eedeac495271d0f";
        const ETH = "0x7d812B62Dc15e6F4073ebA8a2bA8Db19c4E40704";
     const ad_to = owner.address;
-<<<<<<< HEAD
     const tokenArtifacts = await artifacts.readArtifact("IERC20");//DAI instance
-=======
-      
-    const tokenArtifacts = await artifacts.readArtifact("IERC20");
->>>>>>> fa80ea98c1065defa83a128dcc8697bb4252007d
     const tokenx = new ethers.Contract(DAI,tokenArtifacts.abi);
     await tokenx.connect(owner).approve(hardhat.address,ethers.utils.parseUnits("2", 18) );
      await hardhat.connect(owner).swapTtoE(DAI,ethers.utils.parseUnits("2", 18),0,ad_to);
