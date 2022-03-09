@@ -1,7 +1,7 @@
 const { expect } = require("chai");
 const { ethers, artifacts } = require("hardhat");
 const hre = require("hardhat");
-// GOOD WORK!!
+
 describe("Swap token to token", function(){
   let token;
   let hardhat;
