@@ -1,7 +1,5 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.5;
-
-import "hardhat/console.sol";
 import "./interfaceIERC20.sol";
 import "./interfaceIUniswapV2Router.sol";
 import "./interfaceIUniswapV2Pair.sol";
